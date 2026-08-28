@@ -23,8 +23,10 @@ updateUI(); // Initial UI update on page load
 btnContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("add-btn")) {
     const amount = Number(e.target.dataset.amount);
-    currentInTake += amount;
-    console.log(amount);
+
+    // CAap CurrentInTake at dailyGoal (2000)
+    currentInTake = Math.min(currentInTake + amount, dailyGoal);
+
     updateUI();
   }
 });
